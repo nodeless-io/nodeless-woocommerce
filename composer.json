@@ -1,0 +1,19 @@
+{
+  "name": "nodeless-io/nodeless-woocommerce",
+  "type": "project",
+  "license": "MIT",
+  "autoload": {
+    "psr-4": {
+      "NodelessIO\\WC\\": "src/"
+    }
+  },
+  "authors": [
+    {
+      "name": "nodeless.io development team",
+      "email": "hello@nodeless.io"
+    }
+  ],
+  "require": {
+    "nodeless-io/nodeless-php": "dev-main"
+  }
+}

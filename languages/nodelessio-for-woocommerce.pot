@@ -1,0 +1,396 @@
+# Copyright (C) 2023 Nodeless.io
+# This file is distributed under the same license as the Nodeless.io For Woocommerce package.
+msgid ""
+msgstr ""
+"Project-Id-Version: Nodeless.io For Woocommerce 0.1.0\n"
+"Report-Msgid-Bugs-To: "
+"https://wordpress.org/support/plugin/nodelessio-for-woocommerce\n"
+"POT-Creation-Date: 2023-01-19 12:59:24+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2023-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"X-Generator: grunt-wp-i18n 0.5.4\n"
+"X-Poedit-KeywordsList: "
+"__;_e;_x:1,2c;_ex:1,2c;_n:1,2;_nx:1,2,4c;_n_noop:1,2;_nx_noop:1,2,3c;esc_"
+"attr__;esc_html__;esc_attr_e;esc_html_e;esc_attr_x:1,2c;esc_html_x:1,2c;\n"
+"Language: en\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-Country: United States\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-Basepath: ../\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-Bookmarks: \n"
+"X-Textdomain-Support: yes\n"
+
+#: nodelessio-for-woocommerce.php:88
+msgid "Plugin not configured yet, please %1$sconfigure the plugin here%2$s"
+msgstr ""
+
+#: nodelessio-for-woocommerce.php:106
+msgid "Your PHP version is %s but Nodeless.io Payment plugin requires version 8.0+."
+msgstr ""
+
+#: nodelessio-for-woocommerce.php:112
+msgid ""
+"WooCommerce seems to be not installed. Make sure you do before you activate "
+"NodelessIO Payment Gateway."
+msgstr ""
+
+#: nodelessio-for-woocommerce.php:118
+msgid ""
+"The PHP cURL extension is not installed. Make sure it is available "
+"otherwise this plugin will not work."
+msgstr ""
+
+#: nodelessio-for-woocommerce.php:209
+msgid "Settings"
+msgstr ""
+
+#: nodelessio-for-woocommerce.php:211
+msgid "Debug log"
+msgstr ""
+
+#: nodelessio-for-woocommerce.php:213
+msgid "Docs"
+msgstr ""
+
+#: nodelessio-for-woocommerce.php:215
+msgid "Support Chat"
+msgstr ""
+
+#: src/Admin/GlobalSettings.php:16
+msgid "Nodeless.io Settings"
+msgstr ""
+
+#: src/Admin/GlobalSettings.php:109
+msgid "Send customer data to Nodeless.io"
+msgstr ""
+
+#: src/Admin/GlobalSettings.php:116
+msgid "Sats-Mode"
+msgstr ""
+
+#: src/Admin/GlobalSettings.php:123
+msgid "Debug Log"
+msgstr ""
+
+#: src/Admin/GlobalSettings.php:151
+msgid "Successfully verified API key on nodeless.io"
+msgstr ""
+
+#: src/Admin/GlobalSettings.php:153
+msgid ""
+"Could not verify permission for the API key and this store. Make sure both "
+"are correct."
+msgstr ""
+
+#: src/Admin/GlobalSettings.php:157
+msgid ""
+"Error fetching data for this API key from server. Please check if the key "
+"is valid. Error: %s"
+msgstr ""
+
+#: src/Gateway/AbstractGateway.php:32 src/Gateway/DefaultGateway.php:18
+msgid "Proceed with payment"
+msgstr ""
+
+#: src/Gateway/AbstractGateway.php:61
+msgid "Enabled/Disabled"
+msgstr ""
+
+#: src/Gateway/AbstractGateway.php:63
+msgid "Enable this payment gateway."
+msgstr ""
+
+#: src/Gateway/AbstractGateway.php:69
+msgid "Title"
+msgstr ""
+
+#: src/Gateway/AbstractGateway.php:71
+msgid ""
+"Controls the name of this payment method as displayed to the customer "
+"during checkout."
+msgstr ""
+
+#: src/Gateway/AbstractGateway.php:76
+msgid "Customer Message"
+msgstr ""
+
+#: src/Gateway/AbstractGateway.php:78
+msgid "Message to explain how the customer will be paying for the purchase."
+msgstr ""
+
+#: src/Gateway/AbstractGateway.php:83
+msgid "Button text"
+msgstr ""
+
+#: src/Gateway/AbstractGateway.php:85
+msgid "Button text below the checkout form."
+msgstr ""
+
+#: src/Gateway/AbstractGateway.php:86
+msgid "Proceed with payment."
+msgstr ""
+
+#: src/Gateway/AbstractGateway.php:101 src/Gateway/AbstractGateway.php:460
+msgid "Can't process order. Please contact us if the problem persists."
+msgstr ""
+
+#: src/Gateway/AbstractGateway.php:170
+msgid "Gateway Icon:"
+msgstr ""
+
+#: src/Gateway/AbstractGateway.php:175
+msgid "Upload or select icon"
+msgstr ""
+
+#: src/Gateway/AbstractGateway.php:182
+msgid "Remove image"
+msgstr ""
+
+#: src/Gateway/AbstractGateway.php:232
+msgid "Use this image"
+msgstr ""
+
+#: src/Gateway/AbstractGateway.php:233
+msgid "Insert image"
+msgstr ""
+
+#: src/Gateway/AbstractGateway.php:322
+msgid "Invoice payment received fully, waiting for settlement."
+msgstr ""
+
+#: src/Gateway/AbstractGateway.php:329
+msgid "Invoice fully paid."
+msgstr ""
+
+#: src/Gateway/AbstractGateway.php:336
+msgid "Invoice expired."
+msgstr ""
+
+#: src/Gateway/AbstractGateway.php:341
+msgid "Invoice was cancelled."
+msgstr ""
+
+#: src/Gateway/AbstractGateway.php:347
+msgid "Invoice is underpaid. Needs manual checking"
+msgstr ""
+
+#: src/Gateway/AbstractGateway.php:354
+msgid "Invoice is overpaid. Needs manual checking"
+msgstr ""
+
+#: src/Gateway/AbstractGateway.php:361
+msgid ""
+"Invoice is in flight. Eventually needs manual checking if no paid status "
+"follows."
+msgstr ""
+
+#: src/Gateway/DefaultGateway.php:21
+msgid "Nodeless.io default gateway supporting easy Bitcoin payments."
+msgstr ""
+
+#. Plugin Name of the plugin/theme
+msgid "Nodeless.io For Woocommerce"
+msgstr ""
+
+#. Plugin URI of the plugin/theme
+msgid "https://wordpress.org/plugins/nodelessio-for-woocommerce/"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid ""
+"Nodeless.io is a bitcoin payment service which allows you to receive "
+"payments in Bitcoin."
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "Nodeless.io"
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "https://nodeless.io"
+msgstr ""
+
+#: nodelessio-for-woocommerce.php:132
+msgctxt "nodelessio-for-woocommerce"
+msgid "Payment Status"
+msgstr ""
+
+#: nodelessio-for-woocommerce.php:140
+msgctxt "nodelessio-for-woocommerce"
+msgid "Waiting for payment settlement"
+msgstr ""
+
+#: nodelessio-for-woocommerce.php:143
+msgctxt "nodelessio-for-woocommerce"
+msgid "Payment successful, order processing."
+msgstr ""
+
+#: nodelessio-for-woocommerce.php:146
+msgctxt "nodelessio-for-woocommerce"
+msgid "Order completed"
+msgstr ""
+
+#: nodelessio-for-woocommerce.php:149
+msgctxt "nodelessio-for-woocommerce"
+msgid "Payment failed"
+msgstr ""
+
+#: src/Admin/GlobalSettings.php:51
+msgctxt "global_settings"
+msgid "Nodeless.io Payments Settings"
+msgstr ""
+
+#: src/Admin/GlobalSettings.php:57
+msgctxt "global_settings"
+msgid ""
+"This plugin version is %s and your PHP version is %s. Check out our <a "
+"href=\"https://docs.nodeless.io/WooCommerce/\" "
+"target=\"_blank\">installation instructions</a>. If you need assistance, "
+"please come on our <a href=\"https://chat.nodeless.io\" "
+"target=\"_blank\">chat</a>. Thank you for using Nodeless.io!"
+msgstr ""
+
+#: src/Admin/GlobalSettings.php:61
+msgctxt "global_settings"
+msgid "URL"
+msgstr ""
+
+#: src/Admin/GlobalSettings.php:67
+msgctxt "global_settings"
+msgid ""
+"INTERNAL NOTE: URL/host to Nodeless.io instance. Will be replaced by "
+"testnet and mainnet switch."
+msgstr ""
+
+#: src/Admin/GlobalSettings.php:68
+msgctxt "global_settings"
+msgid "e.g. https://nodeless.io"
+msgstr ""
+
+#: src/Admin/GlobalSettings.php:73
+msgctxt "global_settings"
+msgid "API Key"
+msgstr ""
+
+#: src/Admin/GlobalSettings.php:75
+msgctxt "global_settings"
+msgid ""
+"Your Nodeless.io API Key. If you do not have any yet <a href=\"#\" "
+"class=\"nodeless-api-key-link\" target=\"_blank\">click here to generate "
+"API keys.</a>"
+msgstr ""
+
+#: src/Admin/GlobalSettings.php:80
+msgctxt "global_settings"
+msgid "Store ID"
+msgstr ""
+
+#: src/Admin/GlobalSettings.php:82
+msgctxt "global_settings"
+msgid ""
+"Your Nodeless.io Store ID. You can find it on the store settings page on "
+"Nodeless.io."
+msgstr ""
+
+#: src/Admin/GlobalSettings.php:87
+msgctxt "global_settings"
+msgid "Webhook URL"
+msgstr ""
+
+#: src/Admin/GlobalSettings.php:89
+msgctxt "global_settings"
+msgid ""
+"Your webhook URL to be used in the weboook creation on store settings page "
+"on Nodeless.io."
+msgstr ""
+
+#: src/Admin/GlobalSettings.php:98
+msgctxt "global_settings"
+msgid "Webhook secret"
+msgstr ""
+
+#: src/Admin/GlobalSettings.php:100
+msgctxt "global_settings"
+msgid ""
+"Your Nodeless.io Webhook Secret. Copy it when you create your webhook on "
+"Nodeless.io."
+msgstr ""
+
+#: src/Admin/GlobalSettings.php:112
+msgctxt "global_settings"
+msgid ""
+"If you want customer name, address, etc. sent to Nodeless.io, enable this "
+"option. By default for privacy and GDPR reasons this is disabled."
+msgstr ""
+
+#: src/Admin/GlobalSettings.php:119
+msgctxt "global_settings"
+msgid ""
+"Makes Satoshis/Sats available as currency \"SATS\" (can be found in "
+"WooCommerce->Settings->General) and handles conversion to BTC before "
+"creating the invoice on Nodeless.io."
+msgstr ""
+
+#: src/Admin/GlobalSettings.php:126
+msgctxt "global_settings"
+msgid "Enable logging <a href=\"%s\" class=\"button\">View Logs</a>"
+msgstr ""
+
+#: src/Helper/OrderStates.php:36
+msgctxt "global_settings"
+msgid "New"
+msgstr ""
+
+#: src/Helper/OrderStates.php:37
+msgctxt "global_settings"
+msgid "Pending confirmation"
+msgstr ""
+
+#: src/Helper/OrderStates.php:38
+msgctxt "global_settings"
+msgid "Paid"
+msgstr ""
+
+#: src/Helper/OrderStates.php:39
+msgctxt "global_settings"
+msgid "Expired"
+msgstr ""
+
+#: src/Helper/OrderStates.php:40
+msgctxt "global_settings"
+msgid "Cancelled"
+msgstr ""
+
+#: src/Helper/OrderStates.php:41
+msgctxt "global_settings"
+msgid "Underpaid"
+msgstr ""
+
+#: src/Helper/OrderStates.php:42
+msgctxt "global_settings"
+msgid "Overpaid"
+msgstr ""
+
+#: src/Helper/OrderStates.php:43
+msgctxt "global_settings"
+msgid "In flight"
+msgstr ""
+
+#: src/Helper/OrderStates.php:52
+msgctxt "global_settings"
+msgid "- no mapping / defaults -"
+msgstr ""
+
+#: src/Helper/OrderStates.php:93
+msgctxt "global_settings"
+msgid ""
+"By keeping default behavior for the \"Paid\" status you make sure that "
+"WooCommerce handles orders of virtual and only downloadable products "
+"properly and set those orders to \"complete\" instead of \"processing\" "
+"(like for orders containing physical products)."
+msgstr ""
