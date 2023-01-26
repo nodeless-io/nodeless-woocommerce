@@ -15,7 +15,7 @@ class ApiWebhook {
         'cancelled',
         'underpaid',
         'overpaid',
-        // 'in_flight'
+        'in_flight'
     ];
 
 	/**
