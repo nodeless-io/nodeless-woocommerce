@@ -14,6 +14,6 @@
     }
   ],
   "require": {
-    "nodeless-io/nodeless-php": "dev-main"
+    "nodeless-io/nodeless-php": "dev-webhook"
   }
 }

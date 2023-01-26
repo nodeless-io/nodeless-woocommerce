@@ -4,8 +4,8 @@ declare( strict_types=1 );
 
 namespace NodelessIO\WC\Admin;
 
-use NodelessIO\Client\StoreClient;
 use NodelessIO\WC\Helper\ApiHelper;
+use NodelessIO\WC\Helper\ApiWebhook;
 use NodelessIO\WC\Helper\Logger;
 use NodelessIO\WC\Helper\OrderStates;
 
@@ -83,24 +83,6 @@ class GlobalSettings extends \WC_Settings_Page {
 				'default' => '',
 				'id' => 'nodeless_store_id'
 			],
-			'webhook_url' => [
-				'title' => esc_html_x( 'Webhook URL', 'global_settings', 'nodelessio-for-woocommerce' ),
-				'type' => 'text',
-				'desc_tip' => _x( 'Your webhook URL to be used in the weboook creation on store settings page on Nodeless.io.', 'global_settings', 'nodelessio-for-woocommerce' ),
-				'default' => WC()->api_request_url( 'nodeless' ),
-				'id' => 'nodeless_webhook_url',
-				'custom_attributes' => [
-					'readonly' => 'readonly'
-				],
-
-			],
-			'webhook_secret' => [
-				'title' => esc_html_x( 'Webhook secret', 'global_settings', 'nodelessio-for-woocommerce' ),
-				'type' => 'text',
-				'desc_tip' => _x( 'Your Nodeless.io Webhook Secret. Copy it when you create your webhook on Nodeless.io.', 'global_settings', 'nodelessio-for-woocommerce' ),
-				'default' => '',
-				'id' => 'nodeless_webhook_secret'
-			],
 			'order_states' => [
 				'type' => 'nodeless_order_states',
 				'id' => 'nodeless_order_states'
@@ -149,7 +131,13 @@ class GlobalSettings extends \WC_Settings_Page {
 			try {
 				if ( Apihelper::checkApiConnection( $apiUrl, $apiKey, $storeId ) ) {
 					Notice::addNotice( 'success', __( 'Successfully verified API key on nodeless.io', 'nodelessio-for-woocommerce' ) );
-				} else {
+
+                    // Set up a webhook.
+                    if (ApiWebhook::webhookExists($apiUrl, $apiKey, $storeId) === false &&
+                        ApiWebhook::registerWebhook( $apiUrl, $apiKey, $storeId) ) {
+                        Notice::addNotice( 'success', __( 'Successfully created a webhook for your store.', 'nodelessio-for-woocommerce' ) );
+                    }
+                } else {
 					throw new \Exception( __( 'Could not verify permission for the API key and this store. Make sure both are correct.', 'nodelessio-for-woocommerce' ) );
 				}
 			} catch ( \Throwable $e ) {
