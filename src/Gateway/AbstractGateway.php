@@ -7,21 +7,12 @@ namespace NodelessIO\WC\Gateway;
 use NodelessIO\Client\StoreInvoiceClient;
 use NodelessIO\Response\StoreInvoiceResponse;
 use NodelessIO\WC\Helper\ApiHelper;
+use NodelessIO\WC\Helper\ApiWebhook;
 use NodelessIO\WC\Helper\Logger;
 use NodelessIO\WC\Helper\OrderStates;
 
 abstract class AbstractGateway extends \WC_Payment_Gateway {
 	const ICON_MEDIA_OPTION = 'icon_media_id';
-	const WEBHOOK_STATUSES = [
-		'new',
-		'pending_confirmation',
-		'paid',
-		'expired',
-		'cancelled',
-		'underpaid',
-		'overpaid',
-		'in_flight'
-	];
 
 	protected ApiHelper $apiHelper;
 
@@ -254,7 +245,7 @@ abstract class AbstractGateway extends \WC_Payment_Gateway {
 				}
 			}
 
-			if ( ! isset( $signature ) || ! $this->apiHelper->validWebhookRequest( $signature, $rawPostData ) ) {
+			if ( ! isset( $signature ) || ! ApiWebhook::validWebhookRequest( $signature, $rawPostData ) ) {
 				Logger::debug( 'Failed to validate signature of webhook request.' );
 				wp_die( 'Webhook request validation failed.' );
 			}
@@ -299,9 +290,8 @@ abstract class AbstractGateway extends \WC_Payment_Gateway {
 	 * Change order status according to webhook status and backend configuration.
 	 */
 	protected function processOrderStatus( \WC_Order $order, \stdClass $webhookData ): void {
-		if ( ! in_array( $webhookData->status, self::WEBHOOK_STATUSES ) ) {
+		if ( ! in_array( $webhookData->status, ApiWebhook::WEBHOOK_STATUSES ) ) {
 			Logger::debug( 'Webhook status received but ignored: ' . $webhookData->status );
-
 			return;
 		}
 
