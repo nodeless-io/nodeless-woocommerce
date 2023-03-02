@@ -1,5 +1,5 @@
 .wc_payment_method.payment_method_nodeless label {
-    display: flex;
+    display: flex !important;
 }
 .wc_payment_method .nodeless-woocommerce-icon {
     margin-left: 15px;
