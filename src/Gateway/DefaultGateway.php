@@ -22,6 +22,7 @@ class DefaultGateway extends AbstractGateway {
 
 		// Actions.
 		add_action( 'woocommerce_api_nodeless', [ $this, 'processWebhook' ] );
+        add_filter( 'woocommerce_gateway_icon', [ $this, 'adjustIcon'], 10, 3 );
 	}
 
 	/**
@@ -44,5 +45,14 @@ class DefaultGateway extends AbstractGateway {
 	public function init_form_fields(): void {
 		parent::init_form_fields();
 	}
+
+    /**
+     * Wrap div around icon for better flexbox handling.
+     */
+    public function adjustIcon($icon, $gateway_id) {
+        if ($gateway_id === 'nodeless') {
+            return '<div class="nodeless-woocommerce-icon">' . $icon . '</div>';
+        }
+    }
 
 }

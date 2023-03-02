@@ -79,6 +79,12 @@ class NodelessIOWCPlugin {
 		return $gateways;
 	}
 
+    public static function enqueueScripts(): void {
+        // Load CSS.
+        wp_register_style('nodeless_payment', plugins_url('assets/css/nodeless-style.css',__FILE__ ));
+        wp_enqueue_style('nodeless_payment');
+    }
+
 	/**
 	 * Displays notice (and link to config page) on admin dashboard if the plugin is not configured yet.
 	 */
@@ -234,3 +240,4 @@ register_activation_hook( __FILE__, function() {
 // Initialize payment gateways and plugin.
 add_filter( 'woocommerce_payment_gateways', [ 'NodelessIOWCPlugin', 'initPaymentGateways' ] );
 add_action( 'plugins_loaded', 'init_nodeless', 0 );
+add_action( 'wp_enqueue_scripts', [ 'NodelessIOWCPlugin', 'enqueueScripts' ]  );
