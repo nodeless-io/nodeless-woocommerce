@@ -27,7 +27,7 @@ jobs:
         env:
           SVN_USERNAME: ${{ secrets.SVN_USERNAME }}
           SVN_PASSWORD: ${{ secrets.SVN_PASSWORD }}
-          SLUG: nodelessio-for-woocommerce
+          SLUG: nodeless-for-woocommerce
       - name: Upload release asset
         uses: actions/upload-release-asset@v1
         env:
@@ -35,5 +35,5 @@ jobs:
         with:
           upload_url: ${{ github.event.release.upload_url }}
           asset_path: ${{ steps.deploy.outputs.zip-path }}
-          asset_name: nodelessio-for-woocommerce.zip
+          asset_name: nodeless-for-woocommerce.zip
           asset_content_type: application/zip

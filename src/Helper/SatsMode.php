@@ -22,7 +22,7 @@ class SatsMode {
 
 	public function addCurrency( $currencies ) {
 		foreach ( $this->currencies as $code => $curr ) {
-			$currencies[ $code ] = __( $curr[0], 'nodelessio-for-woocommerce' );
+			$currencies[ $code ] = __( $curr[0], 'nodeless-for-woocommerce' );
 		}
 
 		return $currencies;

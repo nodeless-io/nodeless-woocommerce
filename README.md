@@ -1,7 +1,7 @@
-# Nodeless.io  Plugin for WooCommerce
+# Nodeless for WooCommerce plugin
 
 For a detailed feature overview and description go to the official WordPress plugin page:
-https://wordpress.org/plugins/nodelessio-for-woocommerce/
+https://wordpress.org/plugins/nodeless-for-woocommerce/
 
 This readme is mostly about plugin development on the main repo on GitHub.
 
@@ -21,6 +21,12 @@ git clone git@github.com:nodeless-io/nodeless-woocommerce.git
 **Install dependencies with Composer:**
 ```
 composer install
+```
+
+### Override host
+For local development you can override backend host by defining the constant `NODELESS_HOST` in your wp-settings.php:
+```
+define('NODELESS_HOST', 'http://host.docker.internal');
 ```
 
 ### Contributing

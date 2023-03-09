@@ -1,11 +1,11 @@
 <?php
 /**
- * Plugin Name:     Nodeless.io For Woocommerce
+ * Plugin Name:     Nodeless For Woocommerce
  * Plugin URI:      https://wordpress.org/plugins/nodelessio-for-woocommerce/
  * Description:     Nodeless.io is a bitcoin payment service which allows you to receive payments in Bitcoin.
  * Author:          Nodeless.io
  * Author URI:      https://nodeless.io
- * Text Domain:     nodelessio-for-woocommerce
+ * Text Domain:     nodeless-for-woocommerce
  * Domain Path:     /languages
  * Version:         0.1.0
  * Requires PHP:    8.0
@@ -23,11 +23,11 @@ use NodelessIO\WC\Helper\Logger;
 
 defined( 'ABSPATH' ) || exit();
 
-define( 'NODELESSIO_VERSION', '0.1.0' );
-define( 'NODELESSIO_VERSION_KEY', 'nodeless_version' );
-define( 'NODELESSIO_PLUGIN_FILE_PATH', plugin_dir_path( __FILE__ ) );
-define( 'NODELESSIO_PLUGIN_URL', plugin_dir_url(__FILE__ ) );
-define( 'NODELESSIO_PLUGIN_ID', 'nodelessio-for-woocommerce' );
+define( 'NODELESS_VERSION', '0.1.0' );
+define( 'NODELESS_VERSION_KEY', 'nodeless_version' );
+define( 'NODELESS_PLUGIN_FILE_PATH', plugin_dir_path( __FILE__ ) );
+define( 'NODELESS_PLUGIN_URL', plugin_dir_url(__FILE__ ) );
+define( 'NODELESS_PLUGIN_ID', 'nodeless-for-woocommerce' );
 
 class NodelessIOWCPlugin {
 
@@ -54,7 +54,7 @@ class NodelessIOWCPlugin {
 	}
 
 	public function includes(): void {
-		$autoloader = NODELESSIO_PLUGIN_FILE_PATH . 'vendor/autoload.php';
+		$autoloader = NODELESS_PLUGIN_FILE_PATH . 'vendor/autoload.php';
 		if (file_exists($autoloader)) {
 			/** @noinspection PhpIncludeInspection */
 			require_once $autoloader;
@@ -93,7 +93,7 @@ class NodelessIOWCPlugin {
 			$message = sprintf(
 				esc_html__(
 					'Plugin not configured yet, please %1$sconfigure the plugin here%2$s',
-					'nodelessio-for-woocommerce'
+					'nodeless-for-woocommerce'
 				),
 				'<a href="' . esc_url(admin_url('admin.php?page=wc-settings&tab=nodeless_settings')) . '">',
 				'</a>'
@@ -109,19 +109,19 @@ class NodelessIOWCPlugin {
 	public function dependenciesNotification() {
 		// Check PHP version.
 		if ( version_compare( PHP_VERSION, '8.0', '<' ) ) {
-			$versionMessage = sprintf( __( 'Your PHP version is %s but Nodeless.io Payment plugin requires version 8.0+.', 'nodelessio-for-woocommerce' ), PHP_VERSION );
+			$versionMessage = sprintf( __( 'Your PHP version is %s but Nodeless.io Payment plugin requires version 8.0+.', 'nodeless-for-woocommerce' ), PHP_VERSION );
 			Notice::addNotice('error', $versionMessage);
 		}
 
 		// Check if WooCommerce is installed.
 		if ( ! is_plugin_active('woocommerce/woocommerce.php') ) {
-			$wcMessage = __('WooCommerce seems to be not installed. Make sure you do before you activate NodelessIO Payment Gateway.', 'nodelessio-for-woocommerce');
+			$wcMessage = __('WooCommerce seems to be not installed. Make sure you do before you activate NodelessIO Payment Gateway.', 'nodeless-for-woocommerce');
 			Notice::addNotice('error', $wcMessage);
 		}
 
 		// Check if PHP cURL is available.
 		if ( ! function_exists('curl_init') ) {
-			$curlMessage = __('The PHP cURL extension is not installed. Make sure it is available otherwise this plugin will not work.', 'nodelessio-for-woocommerce');
+			$curlMessage = __('The PHP cURL extension is not installed. Make sure it is available otherwise this plugin will not work.', 'nodeless-for-woocommerce');
 			Notice::addNotice('error', $curlMessage);
 		}
 	}
@@ -135,7 +135,7 @@ class NodelessIOWCPlugin {
 			return;
 		}
 
-		$title = _x('Payment Status', 'nodelessio-for-woocommerce');
+		$title = _x('Payment Status', 'nodeless-for-woocommerce');
 
 		$orderData = $order->get_data();
 		$status = $orderData['status'];
@@ -143,19 +143,19 @@ class NodelessIOWCPlugin {
 		switch ($status)
 		{
 			case 'on-hold':
-				$statusDesc = _x('Waiting for payment settlement', 'nodelessio-for-woocommerce');
+				$statusDesc = _x('Waiting for payment settlement', 'nodeless-for-woocommerce');
 				break;
 			case 'processing':
-				$statusDesc = _x('Payment successful, order processing.', 'nodelessio-for-woocommerce');
+				$statusDesc = _x('Payment successful, order processing.', 'nodeless-for-woocommerce');
 				break;
 			case 'completed':
-				$statusDesc = _x('Order completed', 'nodelessio-for-woocommerce');
+				$statusDesc = _x('Order completed', 'nodeless-for-woocommerce');
 				break;
 			case 'failed':
-				$statusDesc = _x('Payment failed', 'nodelessio-for-woocommerce');
+				$statusDesc = _x('Payment failed', 'nodeless-for-woocommerce');
 				break;
 			default:
-				$statusDesc = _x(ucfirst($status), 'nodelessio-for-woocommerce');
+				$statusDesc = _x(ucfirst($status), 'nodeless-for-woocommerce');
 				break;
 		}
 
@@ -192,7 +192,7 @@ function init_nodeless() {
  */
 add_action('init', function() {
 	// Adding textdomain and translation support.
-	load_plugin_textdomain('nodelessio-for-woocommerce', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/');
+	load_plugin_textdomain('nodeless-for-woocommerce', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/');
 	// Flush rewrite rules only once after activation.
 	if ( ! get_option('nodeless_permalinks_flushed') ) {
 		flush_rewrite_rules(false);
@@ -201,7 +201,7 @@ add_action('init', function() {
 });
 
 // Action links on plugin overview.
-add_filter( 'plugin_action_links_nodelessio-for-woocommerce/nodelessio-for-woocommerce.php', function ( $links ) {
+add_filter( 'plugin_action_links_nodelessio-for-woocommerce/nodeless-for-woocommerce.php', function ( $links ) {
 
 	// Settings link.
 	$settings_url = esc_url( add_query_arg(
@@ -212,13 +212,13 @@ add_filter( 'plugin_action_links_nodelessio-for-woocommerce/nodelessio-for-wooco
 		get_admin_url() . 'admin.php'
 	) );
 
-	$settings_link = "<a href='$settings_url'>" . __( 'Settings', 'nodelessio-for-woocommerce' ) . '</a>';
+	$settings_link = "<a href='$settings_url'>" . __( 'Settings', 'nodeless-for-woocommerce' ) . '</a>';
 
-	$logs_link = "<a target='_blank' href='" . Logger::getLogFileUrl() . "'>" . __('Debug log', 'nodelessio-for-woocommerce') . "</a>";
+	$logs_link = "<a target='_blank' href='" . Logger::getLogFileUrl() . "'>" . __('Debug log', 'nodeless-for-woocommerce') . "</a>";
 
-	$docs_link = "<a target='_blank' href='". esc_url('https://docs.nodeless.io/WooCommerce/') . "'>" . __('Docs', 'nodelessio-for-woocommerce') . "</a>";
+	$docs_link = "<a target='_blank' href='". esc_url('https://docs.nodeless.io/WooCommerce/') . "'>" . __('Docs', 'nodeless-for-woocommerce') . "</a>";
 
-	$support_link = "<a target='_blank' href='". esc_url('https://chat.nodeless.io/') . "'>" . __('Support Chat', 'nodelessio-for-woocommerce') . "</a>";
+	$support_link = "<a target='_blank' href='". esc_url('https://chat.nodeless.io/') . "'>" . __('Support Chat', 'nodeless-for-woocommerce') . "</a>";
 
 	array_unshift(
 		$links,
@@ -234,7 +234,7 @@ add_filter( 'plugin_action_links_nodelessio-for-woocommerce/nodelessio-for-wooco
 // Installation routine.
 register_activation_hook( __FILE__, function() {
 	update_option('nodeless_permalinks_flushed', 0);
-	update_option( NODELESSIO_VERSION_KEY, NODELESSIO_VERSION );
+	update_option( NODELESS_VERSION_KEY, NODELESS_VERSION );
 });
 
 // Initialize payment gateways and plugin.

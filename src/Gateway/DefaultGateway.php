@@ -15,10 +15,10 @@ class DefaultGateway extends AbstractGateway {
 		parent::__construct();
 
 		// General gateway setup.
-		$this->order_button_text = $this->get_option( 'button', __( 'Proceed with payment', 'nodelessio-for-woocommerce' ) );
+		$this->order_button_text = $this->get_option( 'button', __( 'Proceed with payment', 'nodeless-for-woocommerce' ) );
 		// Admin facing title and description.
 		$this->method_title = 'Nodeless.io';
-		$this->method_description = __( 'Nodeless.io default gateway supporting easy Bitcoin payments.', 'nodelessio-for-woocommerce' );
+		$this->method_description = __( 'Nodeless.io default gateway supporting easy Bitcoin payments.', 'nodeless-for-woocommerce' );
 
 		// Actions.
 		add_action( 'woocommerce_api_nodeless', [ $this, 'processWebhook' ] );

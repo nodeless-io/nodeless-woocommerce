@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Nodeless.io For Woocommerce 0.1.0\n"
 "Report-Msgid-Bugs-To: "
-"https://wordpress.org/support/plugin/nodelessio-for-woocommerce\n"
+"https://wordpress.org/support/plugin/nodeless-for-woocommerce\n"
 "POT-Creation-Date: 2023-01-19 12:59:24+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
@@ -198,7 +198,7 @@ msgid "Nodeless.io For Woocommerce"
 msgstr ""
 
 #. Plugin URI of the plugin/theme
-msgid "https://wordpress.org/plugins/nodelessio-for-woocommerce/"
+msgid "https://wordpress.org/plugins/nodeless-for-woocommerce/"
 msgstr ""
 
 #. Description of the plugin/theme
@@ -216,27 +216,27 @@ msgid "https://nodeless.io"
 msgstr ""
 
 #: nodelessio-for-woocommerce.php:132
-msgctxt "nodelessio-for-woocommerce"
+msgctxt "nodeless-for-woocommerce"
 msgid "Payment Status"
 msgstr ""
 
 #: nodelessio-for-woocommerce.php:140
-msgctxt "nodelessio-for-woocommerce"
+msgctxt "nodeless-for-woocommerce"
 msgid "Waiting for payment settlement"
 msgstr ""
 
 #: nodelessio-for-woocommerce.php:143
-msgctxt "nodelessio-for-woocommerce"
+msgctxt "nodeless-for-woocommerce"
 msgid "Payment successful, order processing."
 msgstr ""
 
 #: nodelessio-for-woocommerce.php:146
-msgctxt "nodelessio-for-woocommerce"
+msgctxt "nodeless-for-woocommerce"
 msgid "Order completed"
 msgstr ""
 
 #: nodelessio-for-woocommerce.php:149
-msgctxt "nodelessio-for-woocommerce"
+msgctxt "nodeless-for-woocommerce"
 msgid "Payment failed"
 msgstr ""
 
