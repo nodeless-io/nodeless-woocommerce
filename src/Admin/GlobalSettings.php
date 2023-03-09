@@ -13,7 +13,7 @@ class GlobalSettings extends \WC_Settings_Page {
 
 	public function __construct() {
 		$this->id = 'nodeless_settings';
-		$this->label = __( 'Nodeless.io Settings', 'nodelessio-for-woocommerce' );
+		$this->label = __( 'Nodeless.io Settings', 'nodeless-for-woocommerce' );
 		// Register custom field type order_states with OrderStatesField class.
 		add_action( 'woocommerce_admin_field_nodeless_order_states', [
 			( new OrderStates() ),
@@ -22,7 +22,7 @@ class GlobalSettings extends \WC_Settings_Page {
 
 		if ( is_admin() ) {
 			// Register and include JS.
-			wp_register_script( 'nodeless_global_settings', NODELESSIO_PLUGIN_URL . 'assets/js/apiKeyRedirect.js', [ 'jquery' ], NODELESSIO_VERSION );
+			wp_register_script( 'nodeless_global_settings', NODELESS_PLUGIN_URL . 'assets/js/apiKeyRedirect.js', [ 'jquery' ], NODELESS_VERSION );
 			wp_enqueue_script( 'nodeless_global_settings' );
 			wp_localize_script( 'nodeless_global_settings',
 				'NodelessGlobalSettings',
@@ -51,35 +51,39 @@ class GlobalSettings extends \WC_Settings_Page {
 				'title' => esc_html_x(
 					'Nodeless.io Payments Settings',
 					'global_settings',
-					'nodelessio-for-woocommerce'
+					'nodeless-for-woocommerce'
 				),
 				'type' => 'title',
-				'desc' => sprintf( _x( 'This plugin version is %s and your PHP version is %s. Check out our <a href="https://docs.nodeless.io/WooCommerce/" target="_blank">installation instructions</a>. If you need assistance, please come on our <a href="https://chat.nodeless.io" target="_blank">chat</a>. Thank you for using Nodeless.io!', 'global_settings', 'nodelessio-for-woocommerce' ), NODELESSIO_VERSION, PHP_MAJOR_VERSION . '.' . PHP_MINOR_VERSION ),
+				'desc' => sprintf( _x( 'This plugin version is %s and your PHP version is %s. Check out our <a href="https://docs.nodeless.io/WooCommerce/" target="_blank">installation instructions</a>. If you need assistance, please come on our <a href="https://chat.nodeless.io" target="_blank">chat</a>. Thank you for using Nodeless.io!', 'global_settings', 'nodeless-for-woocommerce' ), NODELESS_VERSION, PHP_MAJOR_VERSION . '.' . PHP_MINOR_VERSION ),
 				'id' => 'nodeless'
 			],
-			'url' => [
+			'mode' => [
 				'title' => esc_html_x(
-					'URL',
+					'Mode',
 					'global_settings',
-					'nodelessio-for-woocommerce'
+					'nodeless-for-woocommerce'
 				),
-				'type' => 'text',
-				'desc' => esc_html_x( 'INTERNAL NOTE: URL/host to Nodeless.io instance. Will be replaced by testnet and mainnet switch.', 'global_settings', 'nodelessio-for-woocommerce' ),
-				'placeholder' => esc_attr_x( 'e.g. https://nodeless.io', 'global_settings', 'nodelessio-for-woocommerce' ),
+				'type' => 'select',
+				'desc' => esc_html_x( 'Select production or testnet mode.', 'global_settings', 'nodeless-for-woocommerce' ),
+                'options'  => [
+                    'production'    => esc_html_x('Production', 'global_settings', 'nodeless-for-woocommerce'),
+                    'testnet' => esc_html_x('Testnet (for testing)', 'global_settings', 'nodeless-for-woocommerce'),
+                ],
+                'default'  => 'testnet',
 				'desc_tip' => false,
-				'id' => 'nodeless_url'
+				'id' => 'nodeless_mode'
 			],
 			'api_key' => [
-				'title' => esc_html_x( 'API Key', 'global_settings', 'nodelessio-for-woocommerce' ),
+				'title' => esc_html_x( 'API Key', 'global_settings', 'nodeless-for-woocommerce' ),
 				'type' => 'text',
-				'desc' => _x( 'Your Nodeless.io API Key. If you do not have any yet <a href="#" class="nodeless-api-key-link" target="_blank">click here to generate API keys.</a>', 'global_settings', 'nodelessio-for-woocommerce' ),
+				'desc' => _x( 'Your Nodeless.io API Key. If you do not have any yet <a href="#" class="nodeless-api-key-link" target="_blank">click here to generate API keys.</a>', 'global_settings', 'nodeless-for-woocommerce' ),
 				'default' => '',
 				'id' => 'nodeless_api_key'
 			],
 			'store_id' => [
-				'title' => esc_html_x( 'Store ID', 'global_settings', 'nodelessio-for-woocommerce' ),
+				'title' => esc_html_x( 'Store ID', 'global_settings', 'nodeless-for-woocommerce' ),
 				'type' => 'text',
-				'desc_tip' => _x( 'Your Nodeless.io Store ID. You can find it on the store settings page on Nodeless.io.', 'global_settings', 'nodelessio-for-woocommerce' ),
+				'desc_tip' => _x( 'Your Nodeless.io Store ID. You can find it on the store settings page on Nodeless.io.', 'global_settings', 'nodeless-for-woocommerce' ),
 				'default' => '',
 				'id' => 'nodeless_store_id'
 			],
@@ -88,24 +92,24 @@ class GlobalSettings extends \WC_Settings_Page {
 				'id' => 'nodeless_order_states'
 			],
 			'customer_data' => [
-				'title' => __( 'Send customer data to Nodeless.io', 'nodelessio-for-woocommerce' ),
+				'title' => __( 'Send customer data to Nodeless.io', 'nodeless-for-woocommerce' ),
 				'type' => 'checkbox',
 				'default' => 'no',
-				'desc' => _x( 'If you want customer name, address, etc. sent to Nodeless.io, enable this option. By default for privacy and GDPR reasons this is disabled.', 'global_settings', 'nodelessio-for-woocommerce' ),
+				'desc' => _x( 'If you want customer name, address, etc. sent to Nodeless.io, enable this option. By default for privacy and GDPR reasons this is disabled.', 'global_settings', 'nodeless-for-woocommerce' ),
 				'id' => 'nodeless_send_customer_data'
 			],
 			'sats_mode' => [
-				'title' => __( 'Sats-Mode', 'nodelessio-for-woocommerce' ),
+				'title' => __( 'Sats-Mode', 'nodeless-for-woocommerce' ),
 				'type' => 'checkbox',
 				'default' => 'no',
-				'desc' => _x( 'Makes Satoshis/Sats available as currency "SATS" (can be found in WooCommerce->Settings->General) and handles conversion to BTC before creating the invoice on Nodeless.io.', 'global_settings', 'nodelessio-for-woocommerce' ),
+				'desc' => _x( 'Makes Satoshis/Sats available as currency "SATS" (can be found in WooCommerce->Settings->General) and handles conversion to BTC before creating the invoice on Nodeless.io.', 'global_settings', 'nodeless-for-woocommerce' ),
 				'id' => 'nodeless_sats_mode'
 			],
 			'debug' => [
-				'title' => __( 'Debug Log', 'nodelessio-for-woocommerce' ),
+				'title' => __( 'Debug Log', 'nodeless-for-woocommerce' ),
 				'type' => 'checkbox',
 				'default' => 'no',
-				'desc' => sprintf( _x( 'Enable logging <a href="%s" class="button">View Logs</a>', 'global_settings', 'nodelessio-for-woocommerce' ), Logger::getLogFileUrl() ),
+				'desc' => sprintf( _x( 'Enable logging <a href="%s" class="button">View Logs</a>', 'global_settings', 'nodeless-for-woocommerce' ), Logger::getLogFileUrl() ),
 				'id' => 'nodeless_debug'
 			],
 			'sectionend' => [
@@ -123,26 +127,27 @@ class GlobalSettings extends \WC_Settings_Page {
 		Logger::debug( 'Saving GlobalSettings.' );
 		if ( $this->hasNeededApiCredentials() ) {
 
-			$apiUrl = esc_url_raw( $_POST['nodeless_url'] );
+			$mode = esc_url_raw( $_POST['nodeless_mode'] );
+            $apiUrl = defined('NODELESS_HOST') ? NODELESS_HOST : ApiHelper::API_URL[$mode];
 			$apiKey = sanitize_text_field( $_POST['nodeless_api_key'] );
 			$storeId = sanitize_text_field( $_POST['nodeless_store_id'] );
 
 			// Check if the provided API key works.
 			try {
 				if ( Apihelper::checkApiConnection( $apiUrl, $apiKey, $storeId ) ) {
-					Notice::addNotice( 'success', __( 'Successfully verified API key on nodeless.io', 'nodelessio-for-woocommerce' ) );
+					Notice::addNotice( 'success', __( 'Successfully verified API key on nodeless.io', 'nodeless-for-woocommerce' ) );
 
                     // Set up a webhook.
                     if (ApiWebhook::webhookExists($apiUrl, $apiKey, $storeId) === false &&
                         ApiWebhook::registerWebhook( $apiUrl, $apiKey, $storeId) ) {
-                        Notice::addNotice( 'success', __( 'Successfully created a webhook for your store.', 'nodelessio-for-woocommerce' ) );
+                        Notice::addNotice( 'success', __( 'Successfully created a webhook for your store.', 'nodeless-for-woocommerce' ) );
                     }
                 } else {
-					throw new \Exception( __( 'Could not verify permission for the API key and this store. Make sure both are correct.', 'nodelessio-for-woocommerce' ) );
+					throw new \Exception( __( 'Could not verify permission for the API key and this store. Make sure both are correct.', 'nodeless-for-woocommerce' ) );
 				}
 			} catch ( \Throwable $e ) {
 				$messageException = sprintf(
-					__( 'Error fetching data for this API key from server. Please check if the key is valid. Error: %s', 'nodelessio-for-woocommerce' ),
+					__( 'Error fetching data for this API key from server. Please check if the key is valid. Error: %s', 'nodeless-for-woocommerce' ),
 					$e->getMessage()
 				);
 				Notice::addNotice( 'error', $messageException );
@@ -160,7 +165,7 @@ class GlobalSettings extends \WC_Settings_Page {
 
 	private function hasNeededApiCredentials(): bool {
 		if (
-			! empty( $_POST['nodeless_url'] ) &&
+			! empty( $_POST['nodeless_mode'] ) &&
 			! empty( $_POST['nodeless_api_key'] ) &&
 			! empty( $_POST['nodeless_store_id'] )
 		) {

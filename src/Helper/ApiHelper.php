@@ -12,7 +12,11 @@ class ApiHelper {
     public string $url;
     public string $apiKey;
     public string $storeId;
-    public string $webhookSecret;
+
+    public const API_URL = [
+        'testnet' => 'https://testnet.nodeless.io',
+        'production' => 'https://nodeless.io'
+    ];
 
     public function __construct() {
         if ( $config = self::getConfig() ) {
@@ -24,7 +28,8 @@ class ApiHelper {
     }
 
     public static function getConfig(): array {
-        $url = get_option( 'nodeless_url' );
+        $mode = get_option('nodeless_mode', 'testnet');
+        $url = defined('NODELESS_HOST') ? NODELESS_HOST : self::API_URL[$mode];
         $key = get_option( 'nodeless_api_key' );
         if ( $url && $key ) {
             return [

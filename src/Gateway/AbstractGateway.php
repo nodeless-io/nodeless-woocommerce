@@ -20,7 +20,7 @@ abstract class AbstractGateway extends \WC_Payment_Gateway {
 		// General gateway setup.
 		$this->icon = $this->getIcon();
 		$this->has_fields = false;
-		$this->order_button_text = __( 'Proceed with payment', 'nodelessio-for-woocommerce' );
+		$this->order_button_text = __( 'Proceed with payment', 'nodeless-for-woocommerce' );
 
 		// Load the settings.
 		$this->init_form_fields();
@@ -33,7 +33,7 @@ abstract class AbstractGateway extends \WC_Payment_Gateway {
 		$this->apiHelper = new ApiHelper();
 		// Debugging & informational settings.
 		$this->debug_php_version = PHP_MAJOR_VERSION . '.' . PHP_MINOR_VERSION;
-		$this->debug_plugin_version = NODELESSIO_VERSION;
+		$this->debug_plugin_version = NODELESS_VERSION;
 
 		// Actions.
 		add_action( 'admin_enqueue_scripts', [ $this, 'addScripts' ] );
@@ -49,32 +49,32 @@ abstract class AbstractGateway extends \WC_Payment_Gateway {
 	public function init_form_fields() {
 		$this->form_fields = [
 			'enabled' => [
-				'title' => __( 'Enabled/Disabled', 'nodelessio-for-woocommerce' ),
+				'title' => __( 'Enabled/Disabled', 'nodeless-for-woocommerce' ),
 				'type' => 'checkbox',
-				'label' => __( 'Enable this payment gateway.', 'nodelessio-for-woocommerce' ),
+				'label' => __( 'Enable this payment gateway.', 'nodeless-for-woocommerce' ),
 				'default' => 'no',
 				'value' => 'yes',
 				'desc_tip' => false,
 			],
 			'title' => [
-				'title' => __( 'Title', 'nodelessio-for-woocommerce' ),
+				'title' => __( 'Title', 'nodeless-for-woocommerce' ),
 				'type' => 'text',
-				'description' => __( 'Controls the name of this payment method as displayed to the customer during checkout.', 'nodelessio-for-woocommerce' ),
+				'description' => __( 'Controls the name of this payment method as displayed to the customer during checkout.', 'nodeless-for-woocommerce' ),
 				'default' => $this->getTitle(),
 				'desc_tip' => true,
 			],
 			'description' => [
-				'title' => __( 'Customer Message', 'nodelessio-for-woocommerce' ),
+				'title' => __( 'Customer Message', 'nodeless-for-woocommerce' ),
 				'type' => 'textarea',
-				'description' => __( 'Message to explain how the customer will be paying for the purchase.', 'nodelessio-for-woocommerce' ),
+				'description' => __( 'Message to explain how the customer will be paying for the purchase.', 'nodeless-for-woocommerce' ),
 				'default' => $this->getDescription(),
 				'desc_tip' => true,
 			],
 			'button' => [
-				'title' => __( 'Button text', 'nodelessio-for-woocommerce' ),
+				'title' => __( 'Button text', 'nodeless-for-woocommerce' ),
 				'type' => 'textarea',
-				'description' => __( 'Button text below the checkout form.', 'nodelessio-for-woocommerce' ),
-				'default' => __( 'Proceed with payment.', 'nodelessio-for-woocommerce' ),
+				'description' => __( 'Button text below the checkout form.', 'nodeless-for-woocommerce' ),
+				'default' => __( 'Proceed with payment.', 'nodeless-for-woocommerce' ),
 				'desc_tip' => true,
 			],
 			'icon_upload' => [
@@ -89,7 +89,7 @@ abstract class AbstractGateway extends \WC_Payment_Gateway {
 	public function process_payment( $orderId ) {
 		if ( ! $this->apiHelper->configured ) {
 			Logger::debug( 'Nodeless.io API connection not configured, aborting. Please go to Nodeless.io settings and set it up.' );
-			throw new \Exception( __( "Can't process order. Please contact us if the problem persists.", 'nodelessio-for-woocommerce' ) );
+			throw new \Exception( __( "Can't process order. Please contact us if the problem persists.", 'nodeless-for-woocommerce' ) );
 		}
 
 		// Load the order and check it.
@@ -158,19 +158,19 @@ abstract class AbstractGateway extends \WC_Payment_Gateway {
 		ob_start();
 		?>
 		<tr valign="top">
-			<th scope="row" class="titledesc"><?php echo __( 'Gateway Icon:', 'nodelessio-for-woocommerce' ); ?></th>
+			<th scope="row" class="titledesc"><?php echo __( 'Gateway Icon:', 'nodeless-for-woocommerce' ); ?></th>
 			<td class="forminp" id="nodeless_icon">
 				<div id="nodeless_icon_container">
 					<input class="nodeless-icon-button" type="button"
 						   name="woocommerce_nodeless_icon_upload_button"
-						   value="<?php echo __( 'Upload or select icon', 'nodelessio-for-woocommerce' ); ?>"
+						   value="<?php echo __( 'Upload or select icon', 'nodeless-for-woocommerce' ); ?>"
 						   style="<?php echo $mediaId ? 'display:none;' : ''; ?>"
 					/>
 					<img class="nodeless-icon-image" src="<?php echo esc_url( $mediaSrc ); ?>"
 						 style="<?php echo esc_attr( $mediaId ) ? '' : 'display:none;'; ?>"/>
 					<input class="nodeless-icon-remove" type="button"
 						   name="woocommerce_nodeless_icon_button_remove"
-						   value="<?php echo __( 'Remove image', 'nodelessio-for-woocommerce' ); ?>"
+						   value="<?php echo __( 'Remove image', 'nodeless-for-woocommerce' ); ?>"
 						   style="<?php echo $mediaId ? '' : 'display:none;'; ?>"
 					/>
 					<input class="input-text regular-input nodeless-icon-value" type="hidden"
@@ -200,7 +200,7 @@ abstract class AbstractGateway extends \WC_Payment_Gateway {
 			}
 		}
 
-		return $icon ?? NODELESSIO_PLUGIN_URL . 'assets/images/bitcoin-logo.png';
+		return $icon ?? NODELESS_PLUGIN_URL . 'assets/images/bitcoin-logo.png';
 	}
 
 	/**
@@ -211,17 +211,17 @@ abstract class AbstractGateway extends \WC_Payment_Gateway {
 			wp_enqueue_media();
 			wp_register_script(
 				'nodeless_abstract_gateway',
-				NODELESSIO_PLUGIN_URL . 'assets/js/gatewayIconMedia.js',
+				NODELESS_PLUGIN_URL . 'assets/js/gatewayIconMedia.js',
 				[ 'jquery' ],
-				NODELESSIO_VERSION
+				NODELESS_VERSION
 			);
 			wp_enqueue_script( 'nodeless_abstract_gateway' );
 			wp_localize_script(
 				'nodeless_abstract_gateway',
 				'nodelessGatewayData',
 				[
-					'buttonText' => __( 'Use this image', 'nodelessio-for-woocommerce' ),
-					'titleText' => __( 'Insert image', 'nodelessio-for-woocommerce' ),
+					'buttonText' => __( 'Use this image', 'nodeless-for-woocommerce' ),
+					'titleText' => __( 'Insert image', 'nodeless-for-woocommerce' ),
 				]
 			);
 		}
@@ -309,46 +309,46 @@ abstract class AbstractGateway extends \WC_Payment_Gateway {
 
 			case 'pending_confirmation': // The invoice is paid in full.
 				$this->updateWCOrderStatus( $order, $configuredOrderStates[ OrderStates::PENDING_CONFIRMATION ] );
-				$order->add_order_note( __( 'Invoice payment received fully, waiting for settlement.', 'nodelessio-for-woocommerce' ) );
+				$order->add_order_note( __( 'Invoice payment received fully, waiting for settlement.', 'nodeless-for-woocommerce' ) );
 				break;
 
 			case 'paid':
 				Logger::debug( 'Invoice fully paid.' );
 				$order->payment_complete();
 				$this->updateWCOrderStatus( $order, $configuredOrderStates[ OrderStates::PAID ] );
-				$order->add_order_note( __( 'Invoice fully paid.', 'nodelessio-for-woocommerce' ) );
+				$order->add_order_note( __( 'Invoice fully paid.', 'nodeless-for-woocommerce' ) );
 				// Store additional data.
 				$this->updateWCOrder( $order, $webhookData );
 				break;
 
 			case 'expired':
 				$this->updateWCOrderStatus( $order, $configuredOrderStates[ OrderStates::EXPIRED ] );
-				$order->add_order_note( __( 'Invoice expired.', 'nodelessio-for-woocommerce' ) );
+				$order->add_order_note( __( 'Invoice expired.', 'nodeless-for-woocommerce' ) );
 				break;
 
 			case 'cancelled':
 				$this->updateWCOrderStatus( $order, $configuredOrderStates[ OrderStates::CANCELLED ] );
-				$order->add_order_note( __( 'Invoice was cancelled.', 'nodelessio-for-woocommerce' ) );
+				$order->add_order_note( __( 'Invoice was cancelled.', 'nodeless-for-woocommerce' ) );
 				break;
 
 			case 'underpaid':
 				Logger::debug( 'Invoice underpaid.' );
 				$this->updateWCOrderStatus( $order, $configuredOrderStates[ OrderStates::UNDERPAID ] );
-				$order->add_order_note( __( 'Invoice is underpaid. Needs manual checking', 'nodelessio-for-woocommerce' ) );
+				$order->add_order_note( __( 'Invoice is underpaid. Needs manual checking', 'nodeless-for-woocommerce' ) );
 				$this->updateWCOrder( $order, $webhookData );
 				break;
 
 			case 'overpaid':
 				Logger::debug( 'Invoice ovderpaid.' );
 				$this->updateWCOrderStatus( $order, $configuredOrderStates[ OrderStates::UNDERPAID ] );
-				$order->add_order_note( __( 'Invoice is overpaid. Needs manual checking', 'nodelessio-for-woocommerce' ) );
+				$order->add_order_note( __( 'Invoice is overpaid. Needs manual checking', 'nodeless-for-woocommerce' ) );
 				$this->updateWCOrder( $order, $webhookData );
 				break;
 
 			case 'in_flight':
 				Logger::debug( 'Invoice in flight.' );
 				$this->updateWCOrderStatus( $order, $configuredOrderStates[ OrderStates::IN_FLIGHT ] );
-				$order->add_order_note( __( 'Invoice is in flight. Eventually needs manual checking if no paid status follows.', 'nodelessio-for-woocommerce' ) );
+				$order->add_order_note( __( 'Invoice is in flight. Eventually needs manual checking if no paid status follows.', 'nodeless-for-woocommerce' ) );
 				$this->updateWCOrder( $order, $webhookData );
 				break;
 		}
@@ -447,7 +447,7 @@ abstract class AbstractGateway extends \WC_Payment_Gateway {
 
 		} catch ( \Throwable $e ) {
 			Logger::debug( $e->getMessage(), true );
-			throw new \Exception( __( "Can't process order. Please contact us if the problem persists.", 'nodelessio-for-woocommerce' ) );
+			throw new \Exception( __( "Can't process order. Please contact us if the problem persists.", 'nodeless-for-woocommerce' ) );
 		}
 	}
 
@@ -475,7 +475,7 @@ abstract class AbstractGateway extends \WC_Payment_Gateway {
 			'orderId' => $order->get_id(),
 			'orderNo' => $order->get_order_number(),
 			'orderUrl' => $order->get_edit_order_url(),
-			'pluginVersion' => constant( 'NODELESSIO_VERSION' )
+			'pluginVersion' => constant( 'NODELESS_VERSION' )
 		];
 	}
 

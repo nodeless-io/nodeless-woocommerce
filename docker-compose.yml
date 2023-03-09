@@ -18,7 +18,7 @@ services:
     build: .
     volumes:
       - wordpress_data:/var/www/html
-      - ./:/var/www/html/wp-content/plugins/nodelessio-for-woocommerce
+      - ./:/var/www/html/wp-content/plugins/nodeless-for-woocommerce
     ports:
       - "8821:80"
     restart: always

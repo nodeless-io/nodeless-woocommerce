@@ -9,7 +9,7 @@ module.exports = function( grunt ) {
 
 		addtextdomain: {
 			options: {
-				textdomain: 'nodelessio-for-woocommerce',
+				textdomain: 'nodeless-for-woocommerce',
 			},
 			update_all_domains: {
 				options: {
@@ -24,8 +24,8 @@ module.exports = function( grunt ) {
 				options: {
 					domainPath: '/languages',
 					exclude: [ '\.git/*', 'bin/*', 'node_modules/*', 'tests/*' ],
-					mainFile: 'nodelessio-for-woocommerce.php',
-					potFilename: 'nodelessio-for-woocommerce.pot',
+					mainFile: 'nodeless-for-woocommerce.php',
+					potFilename: 'nodeless-for-woocommerce.pot',
 					potHeaders: {
 						poedit: true,
 						'x-poedit-keywordslist': true

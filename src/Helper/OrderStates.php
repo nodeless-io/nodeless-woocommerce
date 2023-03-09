@@ -33,14 +33,14 @@ class OrderStates {
 
 	public function getOrderStateLabels(): array {
 		return [
-			self::NEW => _x( 'New', 'global_settings', 'nodelessio-for-woocommerce' ),
-			self::PENDING_CONFIRMATION => _x( 'Pending confirmation', 'global_settings', 'nodelessio-for-woocommerce' ),
-			self::PAID => _x( 'Paid', 'global_settings', 'nodelessio-for-woocommerce' ),
-			self::EXPIRED => _x( 'Expired', 'global_settings', 'nodelessio-for-woocommerce' ),
-			self::CANCELLED => _x( 'Cancelled', 'global_settings', 'nodelessio-for-woocommerce' ),
-			self::UNDERPAID => _x( 'Underpaid', 'global_settings', 'nodelessio-for-woocommerce' ),
-			self::OVERPAID => _x( 'Overpaid', 'global_settings', 'nodelessio-for-woocommerce' ),
-			self::IN_FLIGHT => _x( 'In flight', 'global_settings', 'nodelessio-for-woocommerce' )
+			self::NEW => _x( 'New', 'global_settings', 'nodeless-for-woocommerce' ),
+			self::PENDING_CONFIRMATION => _x( 'Pending confirmation', 'global_settings', 'nodeless-for-woocommerce' ),
+			self::PAID => _x( 'Paid', 'global_settings', 'nodeless-for-woocommerce' ),
+			self::EXPIRED => _x( 'Expired', 'global_settings', 'nodeless-for-woocommerce' ),
+			self::CANCELLED => _x( 'Cancelled', 'global_settings', 'nodeless-for-woocommerce' ),
+			self::UNDERPAID => _x( 'Underpaid', 'global_settings', 'nodeless-for-woocommerce' ),
+			self::OVERPAID => _x( 'Overpaid', 'global_settings', 'nodeless-for-woocommerce' ),
+			self::IN_FLIGHT => _x( 'In flight', 'global_settings', 'nodeless-for-woocommerce' )
 		];
 	}
 
@@ -49,7 +49,7 @@ class OrderStates {
 		$defaultStates = $this->getDefaultOrderStateMappings();
 
 		$wcStates = wc_get_order_statuses();
-		$wcStates = [ self::IGNORE => _x( '- no mapping / defaults -', 'global_settings', 'nodelessio-for-woocommerce' ) ] + $wcStates;
+		$wcStates = [ self::IGNORE => _x( '- no mapping / defaults -', 'global_settings', 'nodeless-for-woocommerce' ) ] + $wcStates;
 		$orderStates = get_option( $value['id'] );
 		?>
 		<tr valign="top">
@@ -90,7 +90,7 @@ class OrderStates {
 					?>
 				</table>
 				<p class="description">
-					<?php echo _x( 'By keeping default behavior for the "Paid" status you make sure that WooCommerce handles orders of virtual and only downloadable products properly and set those orders to "complete" instead of "processing" (like for orders containing physical products).', 'global_settings', 'nodelessio-for-woocommerce' ); ?>
+					<?php echo _x( 'By keeping default behavior for the "Paid" status you make sure that WooCommerce handles orders of virtual and only downloadable products properly and set those orders to "complete" instead of "processing" (like for orders containing physical products).', 'global_settings', 'nodeless-for-woocommerce' ); ?>
 				</p>
 			</td>
 		</tr>
