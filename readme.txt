@@ -1,5 +1,5 @@
 === Nodeless for WooCommerce ===
-Contributors: ndeet
+Contributors: nodeless,ndeet
 Tags: Bitcoin, Lightning Network, WooCommerce, payment gateway, accept bitcoin, bitcoin plugin, bitcoin payment processor, bitcoin e-commerce, cryptocurrency
 Requires at least: 5.9
 Tested up to: 6.1
