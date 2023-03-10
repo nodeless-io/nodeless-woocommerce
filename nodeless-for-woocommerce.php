@@ -3,16 +3,16 @@
  * Plugin Name:     Nodeless For Woocommerce
  * Plugin URI:      https://wordpress.org/plugins/nodelessio-for-woocommerce/
  * Description:     Nodeless.io is a bitcoin payment service which allows you to receive payments in Bitcoin.
- * Author:          Nodeless.io
+ * Author:          Nodeless
  * Author URI:      https://nodeless.io
  * Text Domain:     nodeless-for-woocommerce
  * Domain Path:     /languages
  * Version:         0.1.0
  * Requires PHP:    8.0
  * Tested up to:    6.1
- * Requires at least: 5.5
- * WC requires at least: 5.0.0
- * WC tested up to: 7.1
+ * Requires at least: 5.6
+ * WC requires at least: 6.0.0
+ * WC tested up to: 7.4
  */
 
 use NodelessIO\WC\Admin\Notice;
@@ -201,7 +201,7 @@ add_action('init', function() {
 });
 
 // Action links on plugin overview.
-add_filter( 'plugin_action_links_nodelessio-for-woocommerce/nodeless-for-woocommerce.php', function ( $links ) {
+add_filter( 'plugin_action_links_nodeless-for-woocommerce/nodeless-for-woocommerce.php', function ( $links ) {
 
 	// Settings link.
 	$settings_url = esc_url( add_query_arg(
@@ -216,7 +216,7 @@ add_filter( 'plugin_action_links_nodelessio-for-woocommerce/nodeless-for-woocomm
 
 	$logs_link = "<a target='_blank' href='" . Logger::getLogFileUrl() . "'>" . __('Debug log', 'nodeless-for-woocommerce') . "</a>";
 
-	$docs_link = "<a target='_blank' href='". esc_url('https://docs.nodeless.io/WooCommerce/') . "'>" . __('Docs', 'nodeless-for-woocommerce') . "</a>";
+	//$docs_link = "<a target='_blank' href='". esc_url('https://docs.nodeless.io/WooCommerce/') . "'>" . __('Docs', 'nodeless-for-woocommerce') . "</a>";
 
 	$support_link = "<a target='_blank' href='". esc_url('https://chat.nodeless.io/') . "'>" . __('Support Chat', 'nodeless-for-woocommerce') . "</a>";
 
@@ -224,7 +224,7 @@ add_filter( 'plugin_action_links_nodelessio-for-woocommerce/nodeless-for-woocomm
 		$links,
 		$settings_link,
 		$logs_link,
-		$docs_link,
+		//$docs_link,
 		$support_link
 	);
 
