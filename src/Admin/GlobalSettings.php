@@ -69,7 +69,7 @@ class GlobalSettings extends \WC_Settings_Page {
                     'production'    => esc_html_x('Production', 'global_settings', 'nodeless-for-woocommerce'),
                     'testnet' => esc_html_x('Testnet (for testing)', 'global_settings', 'nodeless-for-woocommerce'),
                 ],
-                'default'  => 'testnet',
+                'default'  => 'production',
 				'desc_tip' => false,
 				'id' => 'nodeless_mode'
 			],
@@ -127,7 +127,7 @@ class GlobalSettings extends \WC_Settings_Page {
 		Logger::debug( 'Saving GlobalSettings.' );
 		if ( $this->hasNeededApiCredentials() ) {
 
-			$mode = esc_url_raw( $_POST['nodeless_mode'] );
+			$mode = sanitize_key( $_POST['nodeless_mode'] );
             $apiUrl = defined('NODELESS_HOST') ? NODELESS_HOST : ApiHelper::API_URL[$mode];
 			$apiKey = sanitize_text_field( $_POST['nodeless_api_key'] );
 			$storeId = sanitize_text_field( $_POST['nodeless_store_id'] );
