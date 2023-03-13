@@ -5,7 +5,7 @@ Tags: bitcoin, Lightning Network, WooCommerce, payment gateway, accept bitcoin, 
 Requires at least: 5.9
 Tested up to: 6.1
 Requires PHP: 8.0
-Stable tag: 0.1.0
+Stable tag: 0.2.0
 License: MIT
 License URI: https://github.com/nodeless-io/nodeless-woocommerce/blob/master/license.txt
 
