@@ -1,24 +1,11 @@
 jQuery(document).ready(function($) {
-	function isValidUrl(serverUrl) {
-		try {
-			const url = new URL(serverUrl);
-			if (url.protocol !== 'https:' && url.protocol !== 'http:') {
-				return false;
-			}
-		} catch (e) {
-			console.error(e);
-			return false;
-		}
-		return true;
- 	}
-
 	$('.nodeless-api-key-link').click(function(e) {
 		e.preventDefault();
-		const url = $('#nodeless_url').val();
-		if (isValidUrl(url)) {
-			window.open(url);
+		const mode = $('#nodeless_mode').val();
+		if (mode === 'production') {
+			window.open('https://nodeless.io/app/profile/api-keys');
 		} else {
-			alert('Please enter a valid url including https:// in the Nodeless.io URL input field.')
+			window.open('https://testnet.nodeless.io/app/profile/api-keys')
 		}
 	});
 });
