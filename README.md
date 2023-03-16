@@ -42,4 +42,4 @@ composer install
 ```
 docker-compose up -d
 ```
-Go to [http://localhost:8821]() and install WordPress, WooCommerce and Nodeless.io for WooCommerce Plugin.
+Go to [http://localhost:8821]() and install WordPress, WooCommerce and Nodeless for WooCommerce Plugin.
