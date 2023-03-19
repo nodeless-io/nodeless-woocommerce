@@ -54,7 +54,7 @@ class GlobalSettings extends \WC_Settings_Page {
 					'nodeless-for-woocommerce'
 				),
 				'type' => 'title',
-				'desc' => sprintf( _x( 'This plugin version is %s and your PHP version is %s. Check out our <a href="https://docs.nodeless.io/WooCommerce/" target="_blank">installation instructions</a>. If you need assistance, please come on our <a href="https://chat.nodeless.io" target="_blank">chat</a>. Thank you for using Nodeless.io!', 'global_settings', 'nodeless-for-woocommerce' ), NODELESS_VERSION, PHP_MAJOR_VERSION . '.' . PHP_MINOR_VERSION ),
+				'desc' => sprintf( _x( 'This plugin version is %s and your PHP version is %s. Check out our <a href="https://wordpress.org/plugins/nodeless-for-woocommerce/#installation" target="_blank">installation instructions</a>. If you need assistance, please visit our <a href="https://support.nodeless.io" target="_blank">helpdesk</a>. Thank you for using Nodeless!', 'global_settings', 'nodeless-for-woocommerce' ), NODELESS_VERSION, PHP_MAJOR_VERSION . '.' . PHP_MINOR_VERSION ),
 				'id' => 'nodeless'
 			],
 			'mode' => [

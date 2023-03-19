@@ -4,7 +4,7 @@ Tags: Bitcoin, Lightning Network, WooCommerce, payment gateway, accept bitcoin, 
 Requires at least: 5.9
 Tested up to: 6.1
 Requires PHP: 8.0
-Stable tag: 0.2.0
+Stable tag: 1.0.1
 License: MIT
 License URI: https://github.com/nodeless-io/nodeless-woocommerce/blob/master/license.txt
 
@@ -42,5 +42,8 @@ A: Yes you can go to https://testnet.nodeless.io and use it with testnet bitcoin
 
 == Changelog ==
 
-= 0.1.0 :: 2023-03-10 =
+= 1.0.1 :: 2023-03-19 =
+* Testing deployment flow with another release.
+
+= 1.0.0 :: 2023-03-16 =
 * First release.

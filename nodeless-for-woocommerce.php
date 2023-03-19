@@ -7,7 +7,7 @@
  * Author URI:      https://nodeless.io
  * Text Domain:     nodeless-for-woocommerce
  * Domain Path:     /languages
- * Version:         0.2.0
+ * Version:         1.0.1
  * Requires PHP:    8.0
  * Tested up to:    6.1
  * Requires at least: 5.6
@@ -23,7 +23,7 @@ use NodelessIO\WC\Helper\Logger;
 
 defined( 'ABSPATH' ) || exit();
 
-define( 'NODELESS_VERSION', '0.2.0' );
+define( 'NODELESS_VERSION', '1.0.1' );
 define( 'NODELESS_VERSION_KEY', 'nodeless_version' );
 define( 'NODELESS_PLUGIN_FILE_PATH', plugin_dir_path( __FILE__ ) );
 define( 'NODELESS_PLUGIN_URL', plugin_dir_url(__FILE__ ) );
