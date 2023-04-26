@@ -26,7 +26,7 @@ class ApiWebhook {
 			try {
 				$client = new StoreWebhookClient( $apiUrl, $apiKey );
 				$existingWebhook = $client->getWebhook( $storeId, $storedWebhook['id'] );
-				// Check for the url here as it could have been changed on BTCPay Server making the webhook not work for WooCommerce anymore.
+				// Check for the url here as it could have been changed on Nodeless making the webhook not work for WooCommerce anymore.
 				if (
 					$existingWebhook->getId() === $storedWebhook['id'] &&
 					strpos( $existingWebhook->getData()['url'], $storedWebhook['url'] ) !== false
@@ -42,7 +42,7 @@ class ApiWebhook {
 	}
 
 	/**
-	 * Register a webhook on BTCPay Server and store it locally.
+	 * Register a webhook on Nodeless and store it locally.
 	 */
 	public static function registerWebhook(string $apiUrl, $apiKey, $storeId): ?StoreWebhookResponse {
 		try {
@@ -78,7 +78,7 @@ class ApiWebhook {
 	}
 
 	/**
-	 * Load existing webhook data from BTCPay Server, defaults to locally stored webhook.
+	 * Load existing webhook data from Nodeless, defaults to locally stored webhook.
 	 */
 	public static function getWebhook(?string $webhookId): ?StoreWebhookResponse {
 		$existingWebhook = get_option('nodeless_webhook');
